@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="yukon.runforwater.EmailPasswordActivity">
+
+    <item
+        android:id="@+id/get_educational_content"
+        android:title="@string/get_educational_content" />
+
+    <!--TODO insert back in if this becomes a thing-->
+    <!--<item-->
+        <!--android:id="@+id/build_profile_from_app_barr"-->
+        <!--android:title="@string/build_profile" />-->
+
+    <item
+        android:id="@+id/webView"
+        android:title="@string/shake_your_power" />
+
+    <item
+        android:id="@+id/sign_out_app_bar"
+        android:title="@string/sign_out" />
+
+</menu>

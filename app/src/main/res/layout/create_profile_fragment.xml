@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerVertical="true">
+
+    <EditText
+        android:id="@+id/user_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_a_username"/>
+
+    <EditText
+        android:id="@+id/user_bio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_your_bio"
+        app:layout_constraintStart_toStartOf="@+id/user_username"
+        app:layout_constraintTop_toBottomOf="@+id/user_username" />
+
+    <Button
+        android:id="@+id/set_bio_and_username_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:text="@string/set"
+        app:layout_constraintStart_toStartOf="@+id/user_bio"
+        app:layout_constraintTop_toTopOf="@+id/user_bio" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/string_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!--Strings-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/drilling_start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter drilling start date" />
+
+            <EditText
+                android:id="@+id/drillingFinishDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter drilling Finish Date" />
+
+            <EditText
+                android:id="@+id/pumpInstallationDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter pump Installation Date" />
+
+            <EditText
+                android:id="@+id/county"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter county" />
+
+            <EditText
+                android:id="@+id/typeOfProperty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter type of property" />
+
+            <EditText
+                android:id="@+id/cdnGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter the sponsor" />
+
+            <EditText
+                android:id="@+id/well_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter a well name" />
+
+            <EditText
+                android:id="@+id/street_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter a street address" />
+
+            <EditText
+                android:id="@+id/town"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter a town name" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/localTerrain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter local terrain" />
+
+            <EditText
+                android:id="@+id/locationRelativeToSlope"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter location Relative To Slope" />
+
+            <EditText
+                android:id="@+id/contactName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter contact name" />
+
+            <EditText
+                android:id="@+id/contactCell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter contact cell" />
+
+            <EditText
+                android:id="@+id/rockbit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Rockbit? (True/False)" />
+
+            <EditText
+                android:id="@+id/comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter any other comments" />
+
+            <Button
+                android:id="@+id/switchViews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter number data"
+                android:textColor="@color/white"
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+            <Button
+                android:id="@+id/sendData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Send data to server"
+                android:textColor="@color/white"
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--Numbers-->
+    <LinearLayout
+        android:id="@+id/number_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/numberOfDaysDrilling"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter number Of Days Drilling" />
+
+            <EditText
+                android:id="@+id/averageDrillingPerDayInMeters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter averageDrillingPerDayInMeters" />
+
+            <EditText
+                android:id="@+id/depth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter depth" />
+
+            <EditText
+                android:id="@+id/depthToWater"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter depthToWater" />
+
+            <EditText
+                android:id="@+id/depthOfPumpIntake"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter depthOfPumpIntake" />
+
+            <EditText
+                android:id="@+id/depthToBedrock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter depthToBedrock" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/wellWaterColumn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter wellWaterColumn" />
+
+            <EditText
+                android:id="@+id/depthDrilledIntoBedRock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter depthDrilledIntoBedRock" />
+
+            <EditText
+                android:id="@+id/numberOfNearbyWells"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter numberOfNearbyWells" />
+
+            <EditText
+                android:id="@+id/idOfNearbyWells"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter id Of Nearby Wells (x,y,z,...)" />
+
+            <Button
+                android:id="@+id/switchViews1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter word data"
+                android:textColor="@color/white"
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+            <Button
+                android:id="@+id/sendData1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Send data to server"
+                android:textColor="@color/white"
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>
