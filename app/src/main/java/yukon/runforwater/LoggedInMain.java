@@ -226,8 +226,6 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
 //                return true;
 
             case android.R.id.home:
-                // This manages the back button on the toolbar
-                // Maybe call super?
                 changeFragment(0);
                 return true;
 
@@ -454,7 +452,7 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
         final TextView textView2 = dialogView.findViewById(R.id.tv2);
         final TextView textView3 = dialogView.findViewById(R.id.tv3);
         final Button nextData = dialogView.findViewById(R.id.next_data);
-        
+
         current = 1;
 
         dialogBuilder.setTitle("Nearby Information");
