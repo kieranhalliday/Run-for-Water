@@ -220,31 +220,27 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        findViewById(R.id.mapFragmentContainer).setVisibility(View.GONE);
-
         switch (item.getItemId()) {
 //            case R.id.build_profile_from_app_barr:
 //                changeFragment(3);
 //                return true;
 
-            case R.id.sign_out_app_bar:
-                signOut();
+            case android.R.id.home:
+                // This manages the back button on the toolbar
+                // Maybe call super?
+                changeFragment(0);
+                return true;
+
+            case R.id.get_educational_content:
+                changeFragment(5);
                 return true;
 
             case R.id.webView:
                 changeFragment(4);
                 return true;
 
-            case R.id.get_educational_content:
-                getFragmentManager().beginTransaction().replace(
-                        R.id.fragmentContainer, new InfoFragment())
-                        .commit();
-                return true;
-
-            case android.R.id.home:
-                // This manages the back button on the toolbar
-                // Maybe call super?
-                changeFragment(0);
+            case R.id.sign_out_app_bar:
+                signOut();
                 return true;
 
             default:
@@ -378,84 +374,71 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
         final Button remove = dialogView.findViewById(R.id.remove_marker);
         final Button showNearbyData = dialogView.findViewById(R.id.show_nearby_wells_data);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), EnterDetailedWellData.class);
+        button.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), EnterDetailedWellData.class);
 
-                intent.putExtra("Current User", new GsonBuilder().create().toJson(currentUser, User.class));
-                intent.putExtra("Latitude", marker.getPosition().latitude);
-                intent.putExtra("Longitude", marker.getPosition().longitude);
-                intent.putExtra("idToUse", getWellIdToUse(marker.getPosition()));
-                intent.putExtra("List of Current Wells", wellIds);
+            intent.putExtra("Current User", new GsonBuilder().create().toJson(currentUser, User.class));
+            intent.putExtra("Latitude", marker.getPosition().latitude);
+            intent.putExtra("Longitude", marker.getPosition().longitude);
+            intent.putExtra("idToUse", getWellIdToUse(marker.getPosition()));
+            intent.putExtra("List of Current Wells", wellIds);
 
-                enterDataPopUp.dismiss();
-                startActivity(intent);
-            }
+            enterDataPopUp.dismiss();
+            startActivity(intent);
         });
 
-        remove.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //marker.remove();
+        remove.setOnClickListener(view -> {
+            //marker.remove();
 
-                //toBeDeleted.add(new LatLng(marker.getPosition().latitude, marker.getPosition().longitude));
-                enterDataPopUp.dismiss();
-            }
+            //toBeDeleted.add(new LatLng(marker.getPosition().latitude, marker.getPosition().longitude));
+            enterDataPopUp.dismiss();
         });
 
-        showNearbyData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                enterDataPopUp.dismiss();
-                showAlternativeDialog();
-            }
+        showNearbyData.setOnClickListener(view -> {
+            enterDataPopUp.dismiss();
+            showAlternativeDialog();
         });
 
 
         dialogBuilder.setTitle("Well information");
         dialogBuilder.setMessage("Enter required information below");
-        dialogBuilder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                String name = edt.getText().toString();
-                String address = edt1.getText().toString();
-                String town = edt2.getText().toString();
+        dialogBuilder.setPositiveButton("Done", (dialog, whichButton) -> {
+            String name = edt.getText().toString();
+            String address = edt1.getText().toString();
+            String town = edt2.getText().toString();
 
-                InformationWell informationWell = new InformationWell.InfoWellBuilder(
-                        currentUser.getEmail(),
-                        marker.getPosition().latitude,
-                        marker.getPosition().longitude,
-                        getWellIdToUse(marker.getPosition()))
-                        .build();
+            InformationWell informationWell = new InformationWell.InfoWellBuilder(
+                    currentUser.getEmail(),
+                    marker.getPosition().latitude,
+                    marker.getPosition().longitude,
+                    getWellIdToUse(marker.getPosition()))
+                    .build();
 
-                myRef = database.getReference().child("Wells").child(String.valueOf(informationWell.getWellId()));
+            myRef = database.getReference().child("Wells").child(String.valueOf(informationWell.getWellId()));
 
-                if (!wellIds.containsKey(marker.getPosition())) {
-                    Map<String, Object> well = new HashMap<>();
-                    well.put(informationWell.getWellId(), informationWell);
-                    database.getReference().child("Wells").updateChildren(well);
-                }
+            if (!wellIds.containsKey(marker.getPosition())) {
+                Map<String, Object> well = new HashMap<>();
+                well.put(informationWell.getWellId(), informationWell);
+                database.getReference().child("Wells").updateChildren(well);
+            }
 
-                if (name.length() > 0) {
-                    DatabaseReference newRef = myRef.child("name");
-                    newRef.setValue(name);
-                }
+            if (name.length() > 0) {
+                DatabaseReference newRef = myRef.child("name");
+                newRef.setValue(name);
+            }
 
-                if (address.length() > 0) {
-                    DatabaseReference newRef = myRef.child("streetAddress");
-                    newRef.setValue(address);
-                }
+            if (address.length() > 0) {
+                DatabaseReference newRef = myRef.child("streetAddress");
+                newRef.setValue(address);
+            }
 
-                if (town.length() > 0) {
-                    DatabaseReference newRef = myRef.child("town");
-                    newRef.setValue(town);
-                }
+            if (town.length() > 0) {
+                DatabaseReference newRef = myRef.child("town");
+                newRef.setValue(town);
             }
         });
-        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                //pass
-            }
+        dialogBuilder.setNegativeButton("Cancel", (dialog, whichButton) -> {
+            //pass
         });
         enterDataPopUp = dialogBuilder.create();
         enterDataPopUp.show();
@@ -471,65 +454,57 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
         final TextView textView2 = dialogView.findViewById(R.id.tv2);
         final TextView textView3 = dialogView.findViewById(R.id.tv3);
         final Button nextData = dialogView.findViewById(R.id.next_data);
-
-
+        
         current = 1;
 
         dialogBuilder.setTitle("Nearby Information");
         dialogBuilder.setMessage("Nearby data");
-        dialogBuilder.setPositiveButton("Done", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
+        dialogBuilder.setPositiveButton("Done", (dialog, whichButton) -> {
 
-            }
         });
 
-        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                //pass
-            }
+        dialogBuilder.setNegativeButton("Cancel", (dialog, whichButton) -> {
+            //pass
         });
 
 
-        nextData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (current) {
-                    case 1:
-                        textView1.setVisibility(View.GONE);
-                        textView2.setVisibility(View.VISIBLE);
-                        textView3.setVisibility(View.GONE);
+        nextData.setOnClickListener(view -> {
+            switch (current) {
+                case 1:
+                    textView1.setVisibility(View.VISIBLE);
+                    textView2.setVisibility(View.GONE);
+                    textView3.setVisibility(View.GONE);
 
-                        String text1 = "Depth:" + closestWells.get(1).getDepth()
-                                + " Email: " + closestWells.get(1).getContactEmail()
-                                + " Contact cell: " + closestWells.get(1).getContactCell();
-                        textView2.setText(text1);
-                        current++;
-                        break;
+                    String text1 = "Drilled:" + closestWells.get(0).getDepth()
+                            + " Dist to h20: " + closestWells.get(0).getDepthToWater()
+                            + " Dist to bedrock: " + closestWells.get(0).getDepthToBedrock();
+                    textView1.setText(text1);
+                    current = 1;
+                    break;
 
-                    case 2:
-                        textView1.setVisibility(View.GONE);
-                        textView2.setVisibility(View.GONE);
-                        textView3.setVisibility(View.VISIBLE);
+                case 2:
+                    textView1.setVisibility(View.GONE);
+                    textView2.setVisibility(View.VISIBLE);
+                    textView3.setVisibility(View.GONE);
 
-                        String text2 = "Depth:" + closestWells.get(2).getDepth()
-                                + " Email: " + closestWells.get(2).getContactEmail()
-                                + " Contact cell: " + closestWells.get(2).getContactCell();
-                        textView3.setText(text2);
-                        current++;
-                        break;
+                    String text2 = "Drilled:" + closestWells.get(1).getDepth()
+                            + " Dist to h20: " + closestWells.get(1).getDepthToWater()
+                            + " Dist to bedrock: " + closestWells.get(1).getDepthToBedrock();
+                    textView2.setText(text2);
+                    current++;
+                    break;
 
-                    case 3:
-                        textView1.setVisibility(View.VISIBLE);
-                        textView2.setVisibility(View.GONE);
-                        textView3.setVisibility(View.GONE);
+                case 3:
+                    textView1.setVisibility(View.GONE);
+                    textView2.setVisibility(View.GONE);
+                    textView3.setVisibility(View.VISIBLE);
 
-                        String text = "Depth:" + closestWells.get(0).getDepth()
-                                + " Email: " + closestWells.get(0).getContactEmail()
-                                + " Contact cell: " + closestWells.get(0).getContactCell();
-                        textView1.setText(text);
-                        current = 1;
-                        break;
-                }
+                    String text3 = "Drilled:" + closestWells.get(2).getDepth()
+                            + " Dist to h20: " + closestWells.get(2).getDepthToWater()
+                            + " Dist to bedrock: " + closestWells.get(2).getDepthToBedrock();
+                    textView3.setText(text3);
+                    current++;
+                    break;
             }
         });
 
@@ -555,7 +530,9 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
     private void changeFragment(int position) {
 
         Fragment newFragment;
+        Boolean stayOnSameFragment = false;
 
+        // Pressing home button
         if (position == 0) {
             findViewById(R.id.mapFragmentContainer).setVisibility(View.VISIBLE);
             return;
@@ -567,7 +544,8 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
             if (currentUser.getPartnerUser().equals("")) {
                 Toast.makeText(LoggedInMain.this, "Must be paired in order to chat",
                         Toast.LENGTH_SHORT).show();
-                return;
+                stayOnSameFragment = true;
+                newFragment = null;
             } else {
                 Bundle bundle = new Bundle();
                 String target = gS.toJson(currentUser);
@@ -580,13 +558,21 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
 
         } else if (position == 3) {
             newFragment = new ProfileFragment();
-        } else {
+
+        } else if (position == 4) {
             newFragment = new WebViewFragment();
+
+        } else {
+            newFragment = new InfoFragment();
+
         }
 
-        getFragmentManager().beginTransaction().replace(
-                R.id.fragmentContainer, newFragment)
-                .commit();
+        if (!stayOnSameFragment) {
+            findViewById(R.id.mapFragmentContainer).setVisibility(View.GONE);
+            getFragmentManager().beginTransaction().replace(
+                    R.id.fragmentContainer, newFragment)
+                    .commit();
+        }
     }
 
 

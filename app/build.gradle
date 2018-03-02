@@ -17,6 +17,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dexOptions {
+        incremental true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 repositories {
@@ -29,36 +36,28 @@ repositories {
 
 dependencies {
     implementation 'com.google.android.gms:play-services-maps:11.4.2'
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:appcompat-v7:26.1.0'
     compile 'com.android.support:support-annotations:27.0.0'
     compile 'com.android.support:design:26.1.0'
-
-
     compile 'com.google.firebase:firebase-core:11.4.2'
     compile 'com.google.firebase:firebase-auth:11.4.2'
     compile 'com.google.firebase:firebase-database:11.4.2'
     compile 'com.google.firebase:firebase-storage:11.4.2'
     compile 'com.google.firebase:firebase-messaging:11.4.2'
-
     compile 'com.facebook.android:facebook-android-sdk:4.27.0'
-
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.google.zxing:core:3.3.0'
     compile 'com.google.android.gms:play-services-location:11.4.2'
-
     compile 'com.firebaseui:firebase-ui-storage:2.4.0'
     compile 'com.firebaseui:firebase-ui:2.4.0'
     compile 'com.firebase:firebase-jobdispatcher:0.6.0'
-
     compile 'com.github.ericwlange:AndroidJSCore:3.0.1'
     compile 'com.braintreepayments.api:braintree:2.+'
-
     testCompile 'junit:junit:4.12'
 }
 
