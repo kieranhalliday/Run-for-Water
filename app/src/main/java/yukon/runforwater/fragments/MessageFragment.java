@@ -75,10 +75,13 @@ public class MessageFragment extends Fragment implements View.OnClickListener {
         getView().findViewById(R.id.fab).setOnClickListener(this);
 
         // Always put kenyan UUID first
-        if (currentUser.getKenyan()) {
-            usersRef = database.getReference().child("Messages").child(mAuth.getCurrentUser().getUid() + currentUser.getPartnerUser());
+        String firstUID = mAuth.getCurrentUser().getUid();
+        String secondUID = currentUser.getPartnerUser();
+
+        if (firstUID.compareTo(secondUID) > 0) {
+            usersRef = database.getReference().child("Messages").child(firstUID + secondUID);
         } else {
-            usersRef = database.getReference().child("Messages").child(currentUser.getPartnerUser() + mAuth.getCurrentUser().getUid());
+            usersRef = database.getReference().child("Messages").child(secondUID + firstUID);
         }
 
         // My profile
@@ -169,11 +172,18 @@ public class MessageFragment extends Fragment implements View.OnClickListener {
                 TextView messageTime = v.findViewById(R.id.message_time);
                 ProfilePictureView profilePictureView = v.findViewById(R.id.user_image);
 
+                messageText.setTextColor(getResources().getColor(R.color.black));
+                messageUser.setTextColor(getResources().getColor(R.color.black));
+                messageTime.setTextColor(getResources().getColor(R.color.black));
+
                 TextView otherMessageText = v.findViewById(R.id.message_text_other);
                 TextView otherMessageUser = v.findViewById(R.id.message_user_other);
                 TextView otherMessageTime = v.findViewById(R.id.message_time_other);
                 ProfilePictureView otherUserProfilePictureView = v.findViewById(R.id.other_user_image);
 
+                otherMessageText.setTextColor(getResources().getColor(R.color.black));
+                otherMessageUser.setTextColor(getResources().getColor(R.color.black));
+                otherMessageTime.setTextColor(getResources().getColor(R.color.black));
 
                 if (!FBId.equals("")) {
                     profilePictureView.setProfileId(FBId);
