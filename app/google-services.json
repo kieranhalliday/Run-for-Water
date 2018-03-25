@@ -8,64 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:989704819582:android:c12242231b4ef661",
-        "android_client_info": {
-          "package_name": "com.example.kieranhalliday.cpen391module2"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "989704819582-mkhgalsouipsbdoedvma99ndu9vm4fp2.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.kieranhalliday.cpen391module2",
-            "certificate_hash": "80e8cb7dc6cf280c6d0b2e7832ca226acc56cb3e"
-          }
-        },
-        {
-          "client_id": "989704819582-43h6jhodhres68sa1nk4u8gkrrp1u0v1.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.kieranhalliday.cpen391module2",
-            "certificate_hash": "ece8f0e97d884b61e402f60c98d8cbda480e2397"
-          }
-        },
-        {
-          "client_id": "989704819582-qm61h66fd8kb69c3nh44b1lmaa1tmdak.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBpG8xCyO_wd5RbUU-c_adYZOIIWCD8kBE"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "989704819582-qm61h66fd8kb69c3nh44b1lmaa1tmdak.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:989704819582:android:e6977e8c930e2a0a",
         "android_client_info": {
           "package_name": "yukon.runforwater"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "989704819582-vn6ll1sa41mdg4rg3g39jdfvsqm1iijv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "yukon.runforwater",
+            "certificate_hash": "ece8f0e97d884b61e402f60c98d8cbda480e2397"
+          }
+        },
         {
           "client_id": "989704819582-p99e0nqnadulkkhfhue00k7eki6057gr.apps.googleusercontent.com",
           "client_type": 1,
