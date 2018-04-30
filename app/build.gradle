@@ -33,33 +33,39 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.google.android.gms:play-services-maps:11.8.0'
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation 'com.google.android.gms:play-services-maps:15.0.0'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:appcompat-v7:27.1.0'
-    compile 'com.android.support:support-annotations:27.1.0'
-    compile 'com.android.support:design:27.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.android.support:support-annotations:27.1.0'
+    implementation 'com.android.support:design:27.1.0'
 
-    compile 'com.google.firebase:firebase-core:11.8.0'
-    compile 'com.google.firebase:firebase-auth:11.8.0'
-    compile 'com.google.firebase:firebase-database:11.8.0'
-    compile 'com.google.firebase:firebase-storage:11.8.0'
-    compile 'com.google.firebase:firebase-messaging:11.8.0'
-    compile 'com.firebaseui:firebase-ui:2.4.0'
-    compile 'com.firebaseui:firebase-ui-storage:2.4.0'
-    compile 'com.firebase:firebase-jobdispatcher:0.6.0'
-    compile 'com.facebook.android:facebook-android-sdk:4.27.0'
-    compile 'com.google.android.gms:play-services-location:11.8.0'
-    compile 'com.google.code.gson:gson:2.8.2'
-    compile 'com.github.ericwlange:AndroidJSCore:3.0.1'
+    implementation 'com.google.firebase:firebase-core:15.0.0'
+    implementation 'com.google.firebase:firebase-auth:15.0.0'
+    implementation 'com.google.firebase:firebase-database:15.0.0'
+    implementation 'com.google.firebase:firebase-storage:15.0.0'
+    implementation 'com.google.firebase:firebase-messaging:15.0.0'
+
+    implementation 'com.firebaseui:firebase-ui-database:3.3.1'
+    implementation 'com.firebaseui:firebase-ui-firestore:3.3.1'
+    implementation 'com.firebaseui:firebase-ui-auth:3.3.1'
+    implementation 'com.firebaseui:firebase-ui-storage:3.3.1'
+    implementation 'com.firebaseui:firebase-ui:3.3.1'
+
+    implementation 'com.firebase:firebase-jobdispatcher:0.6.0'
+
+    implementation 'com.facebook.android:facebook-android-sdk:4.27.0'
+    implementation 'com.google.android.gms:play-services-location:15.0.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.github.ericwlange:AndroidJSCore:3.0.1'
 
     // Not sure what this is for
-    compile 'com.google.zxing:core:3.3.0'
+    implementation 'com.google.zxing:core:3.3.0'
 
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 }
 
 apply plugin: 'com.google.gms.google-services'
@@ -67,20 +73,26 @@ apply plugin: 'com.google.gms.google-services'
 configurations.all {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->
         def requested = details.requested
-        if (requested.group == 'com.android.support') {
-            if (!requested.name.startsWith("multidex")) {
-                details.useVersion '25.3.1'
-            }
-        } else if (requested.group == 'com.google.android.gms') {
-            if (requested.version < "11.8.0") {
-                details.useVersion("11.8.0")
-            }
-        }
+//        if( requeted.group == 'com.android.support') {
+//            if (!requested.name.contains("appcompat")) {
+//                details.useVersion '27.1.0'
+//            }
+//        }
+//        if (requested.group == 'com.android.support') {
+//            if (!requested.name.startsWith("multidex")) {
+//                details.useVersion '25.3.1'
+//            }
+//        } else if (requested.group == 'com.google.android.gms') {
+//            if (requested.version < "11.8.0") {
+//                details.useVersion("11.8.0")
+//            }
+//        }
     }
 }
 
 android {
     defaultConfig {
         multiDexEnabled true
+        resConfigs "en"
     }
 }

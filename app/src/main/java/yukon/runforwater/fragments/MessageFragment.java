@@ -14,11 +14,13 @@ import android.widget.TextView;
 
 import com.facebook.login.widget.ProfilePictureView;
 import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseListOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
@@ -162,8 +164,14 @@ public class MessageFragment extends Fragment implements View.OnClickListener {
     private void displayChatMessages() {
         ListView listOfMessages = getView().findViewById(R.id.list_of_messages);
 
-        adapter = new FirebaseListAdapter<ChatMessage>(getActivity().getApplicationContext(),
-                ChatMessage.class, R.layout.message, usersRef) {
+        Query query = usersRef;//FirebaseDatabase.getInstance().getReference().child("chats");
+
+        FirebaseListOptions<ChatMessage> options =
+                new FirebaseListOptions.Builder<ChatMessage>()
+                        .setQuery(query, ChatMessage.class)
+                        .setLayout(android.R.layout.simple_list_item_1)
+                        .build();
+        adapter = new FirebaseListAdapter<ChatMessage>(options){
             @Override
             protected void populateView(View v, ChatMessage model, int position) {
                 // Get references to the views of message.xml

@@ -18,6 +18,7 @@ import com.facebook.FacebookException;
 import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,10 +27,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
+import java.util.Arrays;
+
 public class LogIn extends AppCompatActivity implements
         View.OnClickListener, FacebookCallback<LoginResult> {
 
     private static final String TAG = "Log In Activity";
+    private static final int RC_SIGN_IN = 123;
 
     private TextView mStatusTextView;
     private EditText mEmailField;
@@ -47,13 +51,24 @@ public class LogIn extends AppCompatActivity implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        startActivityForResult(
+                AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setAvailableProviders(Arrays.asList(
+                                new AuthUI.IdpConfig.EmailBuilder().build(),
+                                new AuthUI.IdpConfig.GoogleBuilder().build(),
+                                new AuthUI.IdpConfig.FacebookBuilder().build()))
+                        .build(),
+                RC_SIGN_IN);
+
         setContentView(R.layout.log_in);
 
         // Views
-        mStatusTextView = (TextView) findViewById(R.id.status);
-        mEmailField = (EditText) findViewById(R.id.field_email);
-        mPasswordField = (EditText) findViewById(R.id.field_password);
-        mKenyan = (CheckBox) findViewById(R.id.typeofUser);
+        mStatusTextView = findViewById(R.id.status);
+        mEmailField = findViewById(R.id.field_email);
+        mPasswordField = findViewById(R.id.field_password);
+        mKenyan = findViewById(R.id.typeofUser);
 
         // Buttons
         findViewById(R.id.email_sign_in_button).setOnClickListener(this);
@@ -65,7 +80,7 @@ public class LogIn extends AppCompatActivity implements
 
         // FB INIT
         mCallbackManager = CallbackManager.Factory.create();
-        LoginButton loginButton = (LoginButton) findViewById(R.id.button_facebook_login);
+        LoginButton loginButton = findViewById(R.id.button_facebook_login);
         loginButton.setReadPermissions("email", "public_profile");
         loginButton.registerCallback(mCallbackManager, this);
     }
