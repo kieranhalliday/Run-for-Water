@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="yukon.runforwater.EmailPasswordActivity">
+    tools:context="yukon.runforlife.EmailPasswordActivity">
 
     <item
         android:id="@+id/get_educational_content"

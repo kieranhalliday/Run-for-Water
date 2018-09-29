@@ -1,43 +1,35 @@
 {
   "project_info": {
-    "project_number": "989704819582",
-    "firebase_url": "https://cpen391.firebaseio.com",
-    "project_id": "cpen391",
-    "storage_bucket": "cpen391.appspot.com"
+    "project_number": "263145246925",
+    "firebase_url": "https://run-for-life-bc6d3.firebaseio.com",
+    "project_id": "run-for-life-bc6d3",
+    "storage_bucket": "run-for-life-bc6d3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:989704819582:android:e6977e8c930e2a0a",
+        "mobilesdk_app_id": "1:263145246925:android:6608109289c1829e",
         "android_client_info": {
-          "package_name": "yukon.runforwater"
+          "package_name": "yukon.runforlife"
         }
       },
       "oauth_client": [
         {
-          "client_id": "989704819582-vn6ll1sa41mdg4rg3g39jdfvsqm1iijv.apps.googleusercontent.com",
+          "client_id": "263145246925-1vqq8sbo7kpurhuvbtsdkjffdgncua16.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "yukon.runforwater",
+            "package_name": "yukon.runforlife",
             "certificate_hash": "ece8f0e97d884b61e402f60c98d8cbda480e2397"
           }
         },
         {
-          "client_id": "989704819582-p99e0nqnadulkkhfhue00k7eki6057gr.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "yukon.runforwater",
-            "certificate_hash": "d0152c7bf590e8a70c8d4387e968cbf02c25edb1"
-          }
-        },
-        {
-          "client_id": "989704819582-qm61h66fd8kb69c3nh44b1lmaa1tmdak.apps.googleusercontent.com",
+          "client_id": "263145246925-masul79dl9nf7dklkmlhfdsj4fivoou1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBpG8xCyO_wd5RbUU-c_adYZOIIWCD8kBE"
+          "current_key": "AIzaSyDEY1ebKrvRi6Ao_JxwHzsSuq0BTuBG86I"
         }
       ],
       "services": {
@@ -48,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "989704819582-qm61h66fd8kb69c3nh44b1lmaa1tmdak.apps.googleusercontent.com",
+              "client_id": "263145246925-masul79dl9nf7dklkmlhfdsj4fivoou1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
