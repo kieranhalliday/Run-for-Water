@@ -106,4 +106,14 @@
     <string name="enter_detailed_info">Enter detailed info</string>
     <string name="get_educational_content">Get Educational Content</string>
     <string name="map">Map</string>
+    <string name="is_this_well_a_historic_well">Is this well a historic well</string>
+    <string name="enter_a_town_name">Enter a town name</string>
+    <string name="enter_a_street_address">Enter a street address</string>
+    <string name="enter_a_well_name">Enter a well name</string>
+    <string name="enter_the_sponsor">Enter the sponsor</string>
+    <string name="enter_type_of_property">Enter type of property</string>
+    <string name="enter_county">Enter county</string>
+    <string name="enter_pump_installation_date">Enter pump Installation Date</string>
+    <string name="enter_drilling_finish_date">Enter drilling Finish Date</string>
+    <string name="enter_drilling_start_date">Enter drilling start date</string>
 </resources>

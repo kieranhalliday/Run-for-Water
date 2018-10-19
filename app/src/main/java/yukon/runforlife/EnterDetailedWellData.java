@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +27,9 @@ public class EnterDetailedWellData extends AppCompatActivity implements View.OnC
             pumpInstallationDate, comments, numberOfDaysDrilling,
             averageDrillingPerDayInMeters, depth, depthToWater, depthOfPumpIntake, locationRelativeToSlope,
             depthToBedrock, depthDrilledIntoBedRock, numberOfNearbyWells, idOfNearbyWells,
-            wellWaterColumn, rockBitUsed, wellName;
+            wellWaterColumn, wellName, drySeasonWaterTableDepth, wetSeasonWaterTableDepth,
+            drySeasonFlowRate, wetSeasonFlowRate;
+    private RadioButton historical, rockBitUsed;
 
     private User currentUser;
     private double latitude, longitude;
@@ -249,10 +252,34 @@ public class EnterDetailedWellData extends AppCompatActivity implements View.OnC
             newRef.setValue(wellWaterColumn.getText().toString());
         }
 
-        if (rockBitUsed.getText().toString().length() > 0) {
-            DatabaseReference newRef = myRef.child("rockBitUsed");
-            newRef.setValue(rockBitUsed.getText().toString());
+        if (drySeasonFlowRate.getText().toString().length() > 0) {
+            DatabaseReference newRef = myRef.child("drySeasonFlowRate");
+            newRef.setValue(drySeasonFlowRate.getText().toString());
         }
+
+        if (drySeasonWaterTableDepth.getText().toString().length() > 0) {
+            DatabaseReference newRef = myRef.child("drySeasonWaterTableDepth");
+            newRef.setValue(drySeasonWaterTableDepth.getText().toString());
+        }
+
+        if (wetSeasonWaterTableDepth.getText().toString().length() > 0) {
+            DatabaseReference newRef = myRef.child("wetSeasonWaterTableDepth");
+            newRef.setValue(wetSeasonWaterTableDepth.getText().toString());
+        }
+
+        if (wetSeasonFlowRate.getText().toString().length() > 0) {
+            DatabaseReference newRef = myRef.child("wetSeasonFlowRate");
+            newRef.setValue(wetSeasonFlowRate.getText().toString());
+        }
+
+
+        DatabaseReference rockRef = myRef.child("rockBitUsed");
+        rockRef.setValue(rockBitUsed.isChecked());
+
+
+        DatabaseReference histRef = myRef.child("historical");
+        histRef.setValue(historical.isChecked());
+
     }
 
     public void setListeners() {
@@ -281,5 +308,12 @@ public class EnterDetailedWellData extends AppCompatActivity implements View.OnC
         idOfNearbyWells = findViewById(R.id.idOfNearbyWells);
         wellWaterColumn = findViewById(R.id.wellWaterColumn);
         rockBitUsed = findViewById(R.id.rockbit);
+        historical = findViewById(R.id.historical);
+        drySeasonFlowRate = findViewById(R.id.drySeasonFlowRate);
+        drySeasonWaterTableDepth = findViewById(R.id.drySeasonWaterTableDepth);
+        wetSeasonFlowRate = findViewById(R.id.wetSeasonFlowRate);
+        wetSeasonWaterTableDepth = findViewById(R.id.wetSeasonWaterTableDepth);
+
+
     }
 }

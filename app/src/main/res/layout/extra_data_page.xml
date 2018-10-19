@@ -21,55 +21,67 @@
                 android:id="@+id/drilling_start_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter drilling start date" />
+                android:hint="@string/enter_drilling_start_date" />
 
             <EditText
                 android:id="@+id/drillingFinishDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter drilling Finish Date" />
+                android:hint="@string/enter_drilling_finish_date" />
 
             <EditText
                 android:id="@+id/pumpInstallationDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter pump Installation Date" />
+                android:hint="@string/enter_pump_installation_date" />
 
             <EditText
                 android:id="@+id/county"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter county" />
+                android:hint="@string/enter_county" />
 
             <EditText
                 android:id="@+id/typeOfProperty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter type of property" />
+                android:hint="@string/enter_type_of_property" />
 
             <EditText
                 android:id="@+id/cdnGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter the sponsor" />
+                android:hint="@string/enter_the_sponsor" />
 
             <EditText
                 android:id="@+id/well_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter a well name" />
+                android:hint="@string/enter_a_well_name" />
 
             <EditText
                 android:id="@+id/street_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter a street address" />
+                android:hint="@string/enter_a_street_address" />
 
             <EditText
                 android:id="@+id/town"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter a town name" />
+                android:hint="@string/enter_a_town_name" />
+
+            <RadioButton
+                android:id="@+id/historical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/is_this_well_a_historic_well" />
+
+            <RadioButton
+                android:id="@+id/rockbit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Was a rockbit used?" />
 
 
         </LinearLayout>
@@ -103,12 +115,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Enter contact cell" />
-
-            <EditText
-                android:id="@+id/rockbit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Rockbit? (True/False)" />
 
             <EditText
                 android:id="@+id/comments"
@@ -210,6 +216,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Enter numberOfNearbyWells" />
+
+            <EditText
+                android:id="@+id/drySeasonFlowRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Dry Season Flow Rate" />
+
+            <EditText
+                android:id="@+id/wetSeasonFlowRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Wet Season Flow Rate" />
+
+            <EditText
+                android:id="@+id/drySeasonWaterTableDepth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Dry Season Water Table Depth" />
+
+            <EditText
+                android:id="@+id/wetSeasonWaterTableDepth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Wet Season Water Table Depth" />
 
             <EditText
                 android:id="@+id/idOfNearbyWells"

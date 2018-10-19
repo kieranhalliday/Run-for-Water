@@ -8,11 +8,12 @@ public class InformationWell {
     private String name, cdnGroup, streetAddress, town, county, typeOfProperty, localTerrain, locationRelativeToSlope,
             contactName, contactCell, contactEmail, drillingStartDate, drillingFinishDate, pumpInstallationDate,
             commentsOnDrillingAndPump, wellId, numberOfDaysDrilling, averageDrillingPerDayInMeters, depth, depthToWater, depthOfPumpIntake,
-            depthToBedrock, depthDrilledIntoBedRock, numberOfNearbyWells, idOfNearbyWells, wellWaterColumn;
+            depthToBedrock, depthDrilledIntoBedRock, numberOfNearbyWells, idOfNearbyWells, wellWaterColumn,
+            drySeasonWaterTableDepth, wetSeasonWaterTableDepth, drySeasonFlowRate, wetSeasonFlowRate;
 
     private Double wellLatitude, wellLongitude;
 
-    private boolean rockBitUsed;
+    private boolean rockBitUsed, historical;
 
     public InformationWell() {
     }
@@ -47,6 +48,11 @@ public class InformationWell {
         this.wellLongitude = infoWellBuilder.wellLongitude;
         this.wellWaterColumn = infoWellBuilder.wellWaterColumn;
         this.rockBitUsed = infoWellBuilder.rockBitUsed;
+        this.historical = infoWellBuilder.historical;
+        this.drySeasonFlowRate = infoWellBuilder.drySeasonFlowRate;
+        this.drySeasonWaterTableDepth = infoWellBuilder.drySeasonWaterTableDepth;
+        this.wetSeasonFlowRate = infoWellBuilder.wetSeasonFlowRate;
+        this.wetSeasonWaterTableDepth = infoWellBuilder.wetSeasonWaterTableDepth;
     }
 
     public String getName() {
@@ -281,6 +287,46 @@ public class InformationWell {
         this.rockBitUsed = rockBitUsed;
     }
 
+    public boolean getHistorical() {
+        return historical;
+    }
+
+    public void setHistorical(boolean historical) {
+        this.historical = historical;
+    }
+
+    public String getDrySeasonWaterTableDepth() {
+        return drySeasonWaterTableDepth;
+    }
+
+    public void setDrySeasonWaterTableDepth(String drySeasonWaterTableDepth) {
+        this.drySeasonWaterTableDepth = drySeasonWaterTableDepth;
+    }
+
+    public String getWetSeasonWaterTableDepth() {
+        return wetSeasonWaterTableDepth;
+    }
+
+    public void setWetSeasonWaterTableDepth(String wetSeasonWaterTableDepth) {
+        this.wetSeasonWaterTableDepth = wetSeasonWaterTableDepth;
+    }
+
+    public String getDrySeasonFlowRate() {
+        return drySeasonFlowRate;
+    }
+
+    public void setDrySeasonFlowRate(String drySeasonFlowRate) {
+        this.drySeasonFlowRate = drySeasonFlowRate;
+    }
+
+    public String getWetSeasonFlowRate() {
+        return wetSeasonFlowRate;
+    }
+
+    public void setWetSeasonFlowRate(String wetSeasonFlowRate) {
+        this.wetSeasonFlowRate = wetSeasonFlowRate;
+    }
+
     static class InfoWellBuilder {
         private final String contactEmail;
 
@@ -289,11 +335,13 @@ public class InformationWell {
         private String cdnGroup, county, typeOfProperty, localTerrain, locationRelativeToSlope,
                 contactName, contactCell, drillingStartDate, drillingFinishDate, pumpInstallationDate,
                 commentsOnDrillingAndPump, numberOfDaysDrilling, averageDrillingPerDayInMeters, depth, depthToWater, depthOfPumpIntake,
-                depthToBedrock, depthDrilledIntoBedRock, numberOfNearbyWells, idOfNearbyWells, wellWaterColumn, name, streetAddress, town;
+                depthToBedrock, depthDrilledIntoBedRock, numberOfNearbyWells,
+                idOfNearbyWells, wellWaterColumn, name, streetAddress, town,
+                drySeasonWaterTableDepth, wetSeasonWaterTableDepth, drySeasonFlowRate, wetSeasonFlowRate;
 
         private final double wellLatitude, wellLongitude;
 
-        private boolean rockBitUsed;
+        private boolean rockBitUsed, historical;
 
         public InfoWellBuilder setStreetAddress(String streetAddress) {
             this.streetAddress = streetAddress;
@@ -434,5 +482,40 @@ public class InformationWell {
         }
 
 
+        public void setHistorical(boolean historical) {
+            this.historical = historical;
+        }
+
+        public String getDrySeasonWaterTableDepth() {
+            return drySeasonWaterTableDepth;
+        }
+
+        public void setDrySeasonWaterTableDepth(String drySeasonWaterTableDepth) {
+            this.drySeasonWaterTableDepth = drySeasonWaterTableDepth;
+        }
+
+        public String getWetSeasonWaterTableDepth() {
+            return wetSeasonWaterTableDepth;
+        }
+
+        public void setWetSeasonWaterTableDepth(String wetSeasonWaterTableDepth) {
+            this.wetSeasonWaterTableDepth = wetSeasonWaterTableDepth;
+        }
+
+        public String getDrySeasonFlowRate() {
+            return drySeasonFlowRate;
+        }
+
+        public void setDrySeasonFlowRate(String drySeasonFlowRate) {
+            this.drySeasonFlowRate = drySeasonFlowRate;
+        }
+
+        public String getWetSeasonFlowRate() {
+            return wetSeasonFlowRate;
+        }
+
+        public void setWetSeasonFlowRate(String wetSeasonFlowRate) {
+            this.wetSeasonFlowRate = wetSeasonFlowRate;
+        }
     }
 }

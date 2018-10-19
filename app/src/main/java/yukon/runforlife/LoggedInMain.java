@@ -174,7 +174,7 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     Double lat = 0.0, lon = 0.0;
-                    String id = "", owner = "";
+                    String id = "", owner = "", historical = "FALSE";
 
                     for (DataSnapshot infant : child.getChildren()) {
                         switch (Objects.requireNonNull(infant.getKey())) {
@@ -190,12 +190,21 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
                             case "contactEmail":
                                 owner = String.valueOf(infant.getValue());
                                 break;
+                            case "historical":
+                                historical = String.valueOf(infant.getValue());
                         }
                     }
                     try {
                         MarkerOptions options = new MarkerOptions()
                                 .position(new LatLng(lat, lon));
                         Marker m = mMap.addMarker(options);
+                        if (historical.contains("true")) {
+                            // Historical Wells are in blue
+                            m.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+                        } else {
+                            m.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+                        }
+
                         wellIds.put(new LatLng(lat, lon), id);
                         wellOwners.put(new LatLng(lat, lon), owner);
                         if (!toBeDeleted.contains(new LatLng(lat, lon))) {
@@ -304,6 +313,7 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
         //Change color of three closest and mark them as three closest
         //Add extra button in popup to view nearby well data
         //Set all other wells to red
+        // No color change now because historical wells will always be one color
 
         myRef = database.getReference().child("Wells");
 
@@ -328,7 +338,7 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
                 for (int i = start; i <= start + 3 && distances.size() > 3; i++) {
                     LatLng latLng = new LatLng(wellHashMap.get(distances.get(i)).getWellLatitude(), wellHashMap.get(distances.get(i)).getWellLongitude());
                     Marker m = locationToMarkers.get(latLng);
-                    m.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+//                    m.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
                     closestWells.add(wellHashMap.get(distances.get(i)));
 
                 }
@@ -336,10 +346,10 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
                 for (int i = start + 4; i < distances.size(); i++) {
                     LatLng latLng = new LatLng(wellHashMap.get(distances.get(i)).getWellLatitude(), wellHashMap.get(distances.get(i)).getWellLongitude());
                     Marker m = locationToMarkers.get(latLng);
-                    m.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+//                    m.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
                 }
 
-                marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+//                marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
             }
 
             @Override
