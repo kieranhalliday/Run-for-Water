@@ -66,11 +66,15 @@ public class EnterDetailedWellData extends AppCompatActivity implements View.OnC
         Button sendData1 = findViewById(R.id.sendData1);
         Button switchScreens = findViewById(R.id.switchViews);
         Button switchScreens1 = findViewById(R.id.switchViews1);
+        Button cancel = findViewById(R.id.cancel_button);
+        Button cancel1 = findViewById(R.id.cancel_button1);
 
         sendData.setOnClickListener(this);
         sendData1.setOnClickListener(this);
         switchScreens.setOnClickListener(this);
         switchScreens1.setOnClickListener(this);
+        cancel.setOnClickListener(this);
+        cancel1.setOnClickListener(this);
     }
 
     @Override
@@ -107,6 +111,14 @@ public class EnterDetailedWellData extends AppCompatActivity implements View.OnC
 
             case R.id.sendData1:
                 saveWell();
+                finish();
+                break;
+
+            case R.id.cancel_button:
+                finish();
+                break;
+
+            case R.id.cancel_button1:
                 finish();
                 break;
         }

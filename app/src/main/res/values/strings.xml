@@ -103,7 +103,8 @@
     <string name="shake_your_power">Shake Your Power</string>
     <string name="remove_marker">Remove Marker</string>
     <string name="show_nearby_data">Show nearby data</string>
-    <string name="enter_detailed_info">Enter detailed info</string>
+    <string name="enter_detailed_info">Enter new well info</string>
+    <string name="enter_historical_info">Enter historical well info</string>
     <string name="get_educational_content">Get Educational Content</string>
     <string name="map">Map</string>
     <string name="is_this_well_a_historic_well">Is this well a historic well</string>
@@ -116,4 +117,27 @@
     <string name="enter_pump_installation_date">Enter pump Installation Date</string>
     <string name="enter_drilling_finish_date">Enter drilling Finish Date</string>
     <string name="enter_drilling_start_date">Enter drilling start date</string>
+    <string name="was_a_rockbit_used">Was a rockbit used?</string>
+    <string name="enter_local_terrain">Enter local terrain</string>
+    <string name="enter_location_relative_to_slope">Enter location Relative To Slope</string>
+    <string name="enter_contact_name">Enter contact name</string>
+    <string name="enter_contact_cell">Enter contact cell</string>
+    <string name="enter_any_other_comments">Enter any other comments</string>
+    <string name="enter_number_data">Enter number data</string>
+    <string name="enter_number_of_days_drilling">Enter number Of Days Drilling</string>
+    <string name="enter_averagedrillingperdayinmeters">Enter averageDrillingPerDayInMeters</string>
+    <string name="enter_depth">Enter depth</string>
+    <string name="enter_depthtowater">Enter depthToWater</string>
+    <string name="enter_depthtobedrock">Enter depthToBedrock</string>
+    <string name="enter_wellwatercolumn">Enter wellWaterColumn</string>
+    <string name="enter_depthdrilledintobedrock">Enter depthDrilledIntoBedRock</string>
+    <string name="enter_numberofnearbywells">Enter numberOfNearbyWells</string>
+    <string name="dry_season_flow_rate">Dry Season Flow Rate</string>
+    <string name="enter_word_data">Enter word data</string>
+    <string name="enter_id_of_nearby_wells_x_y_z">Enter id Of Nearby Wells (x,y,z,...)</string>
+    <string name="wet_season_water_table_depth">Wet Season Water Table Depth</string>
+    <string name="dry_season_water_table_depth">Dry Season Water Table Depth</string>
+    <string name="wet_season_flow_rate">Wet Season Flow Rate</string>
+    <string name="send_data_to_server">Send data to server</string>
+    <string name="cancel">Cancel</string>
 </resources>

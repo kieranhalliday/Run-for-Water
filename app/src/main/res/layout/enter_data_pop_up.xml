@@ -41,6 +41,14 @@
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 
             <Button
+                android:id="@+id/enter_historical_data"
+                android:layout_width="181dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_historical_info"
+                android:textColor="@color/white"
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+            <Button
                 android:id="@+id/remove_marker"
                 android:layout_width="181dp"
                 android:layout_height="wrap_content"

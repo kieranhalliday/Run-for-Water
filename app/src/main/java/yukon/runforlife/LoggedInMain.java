@@ -391,12 +391,26 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
         final EditText edt = dialogView.findViewById(R.id.well_name);
         final EditText edt1 = dialogView.findViewById(R.id.street_address);
         final EditText edt2 = dialogView.findViewById(R.id.town);
-        final Button button = dialogView.findViewById(R.id.more_data);
+        final Button addNewWellDataButton = dialogView.findViewById(R.id.more_data);
+        final Button addHistoricalWellDataButton = dialogView.findViewById(R.id.enter_historical_data);
         final Button remove = dialogView.findViewById(R.id.remove_marker);
         final Button showNearbyData = dialogView.findViewById(R.id.show_nearby_wells_data);
 
-        button.setOnClickListener(view -> {
+        addNewWellDataButton.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), EnterDetailedWellData.class);
+
+            intent.putExtra("Current User", new GsonBuilder().create().toJson(currentUser, User.class));
+            intent.putExtra("Latitude", marker.getPosition().latitude);
+            intent.putExtra("Longitude", marker.getPosition().longitude);
+            intent.putExtra("idToUse", getWellIdToUse(marker.getPosition()));
+            intent.putExtra("List of Current Wells", wellIds);
+
+            enterDataPopUp.dismiss();
+            startActivity(intent);
+        });
+
+        addHistoricalWellDataButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), EnterHistoricalWellData.class);
 
             intent.putExtra("Current User", new GsonBuilder().create().toJson(currentUser, User.class));
             intent.putExtra("Latitude", marker.getPosition().latitude);

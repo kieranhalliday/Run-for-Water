@@ -59,13 +59,24 @@
 
         <activity
             android:name=".EnterDetailedWellData"
-            android:parentActivityName=".LogIn">
+            android:parentActivityName=".LoggedInMain">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="yukon.runforlife.LogIn" />
         </activity>
+
+        <activity
+            android:name=".EnterHistoricalWellData"
+            android:parentActivityName=".LoggedInMain">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="yukon.runforlife.LogIn" />
+        </activity>
+
         <activity android:name=".LocationProvider" />
 
         <!--

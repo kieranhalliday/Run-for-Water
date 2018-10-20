@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/string_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <!--Strings-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <EditText
+                android:id="@+id/county"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_county"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/well_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_a_well_name"
+                android:inputType="text" />
+
+
+            <EditText
+                android:id="@+id/town"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_a_town_name"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/depth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_depth"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/depthToWater"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_depthtowater"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/localTerrain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_local_terrain"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/wellWaterColumn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_wellwatercolumn"
+                android:inputType="text" />
+
+
+            <EditText
+                android:id="@+id/drySeasonFlowRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/dry_season_flow_rate"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/wetSeasonFlowRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/wet_season_flow_rate"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/drySeasonWaterTableDepth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/dry_season_water_table_depth"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/wetSeasonWaterTableDepth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/wet_season_water_table_depth"
+                android:inputType="text" />
+
+
+            <EditText
+                android:id="@+id/comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_any_other_comments"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/sendData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/send_data_to_server"
+                android:textColor="@color/white"
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/cancel"
+                android:textColor="@color/white"
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

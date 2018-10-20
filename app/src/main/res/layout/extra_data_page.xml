@@ -8,6 +8,7 @@
         android:id="@+id/string_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:baselineAligned="false"
         android:orientation="horizontal">
 
         <!--Strings-->
@@ -21,55 +22,64 @@
                 android:id="@+id/drilling_start_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/enter_drilling_start_date" />
+                android:hint="@string/enter_drilling_start_date"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/drillingFinishDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/enter_drilling_finish_date" />
+                android:hint="@string/enter_drilling_finish_date"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/pumpInstallationDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/enter_pump_installation_date" />
+                android:hint="@string/enter_pump_installation_date"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/county"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/enter_county" />
+                android:hint="@string/enter_county"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/typeOfProperty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/enter_type_of_property" />
+                android:hint="@string/enter_type_of_property"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/cdnGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/enter_the_sponsor" />
+                android:hint="@string/enter_the_sponsor"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/well_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/enter_a_well_name" />
+                android:hint="@string/enter_a_well_name"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/street_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/enter_a_street_address" />
+                android:hint="@string/enter_a_street_address"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/town"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/enter_a_town_name" />
+                android:hint="@string/enter_a_town_name"
+                android:inputType="text" />
 
             <RadioButton
                 android:id="@+id/historical"
@@ -81,7 +91,7 @@
                 android:id="@+id/rockbit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Was a rockbit used?" />
+                android:hint="@string/was_a_rockbit_used" />
 
 
         </LinearLayout>
@@ -96,37 +106,42 @@
                 android:id="@+id/localTerrain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter local terrain" />
+                android:hint="@string/enter_local_terrain"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/locationRelativeToSlope"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter location Relative To Slope" />
+                android:hint="@string/enter_location_relative_to_slope"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/contactName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter contact name" />
+                android:hint="@string/enter_contact_name"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/contactCell"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter contact cell" />
+                android:hint="@string/enter_contact_cell"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/comments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter any other comments" />
+                android:hint="@string/enter_any_other_comments"
+                android:inputType="text" />
 
             <Button
                 android:id="@+id/switchViews"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter number data"
+                android:hint="@string/enter_number_data"
                 android:textColor="@color/white"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 
@@ -134,7 +149,15 @@
                 android:id="@+id/sendData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Send data to server"
+                android:hint="@string/send_data_to_server"
+                android:textColor="@color/white"
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/cancel"
                 android:textColor="@color/white"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 
@@ -147,6 +170,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+        android:baselineAligned="false"
         android:visibility="gone">
 
         <LinearLayout
@@ -159,25 +183,29 @@
                 android:id="@+id/numberOfDaysDrilling"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter number Of Days Drilling" />
+                android:hint="@string/enter_number_of_days_drilling"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/averageDrillingPerDayInMeters"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter averageDrillingPerDayInMeters" />
+                android:hint="@string/enter_averagedrillingperdayinmeters"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/depth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter depth" />
+                android:hint="@string/enter_depth"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/depthToWater"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter depthToWater" />
+                android:hint="@string/enter_depthtowater"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/depthOfPumpIntake"
@@ -189,7 +217,8 @@
                 android:id="@+id/depthToBedrock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter depthToBedrock" />
+                android:hint="@string/enter_depthtobedrock"
+                android:inputType="text" />
 
         </LinearLayout>
 
@@ -203,55 +232,63 @@
                 android:id="@+id/wellWaterColumn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter wellWaterColumn" />
+                android:hint="@string/enter_wellwatercolumn"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/depthDrilledIntoBedRock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter depthDrilledIntoBedRock" />
+                android:hint="@string/enter_depthdrilledintobedrock"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/numberOfNearbyWells"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter numberOfNearbyWells" />
+                android:hint="@string/enter_numberofnearbywells"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/drySeasonFlowRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Dry Season Flow Rate" />
+                android:hint="@string/dry_season_flow_rate"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/wetSeasonFlowRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Wet Season Flow Rate" />
+                android:hint="@string/wet_season_flow_rate"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/drySeasonWaterTableDepth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Dry Season Water Table Depth" />
+                android:hint="@string/dry_season_water_table_depth"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/wetSeasonWaterTableDepth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Wet Season Water Table Depth" />
+                android:hint="@string/wet_season_water_table_depth"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/idOfNearbyWells"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter id Of Nearby Wells (x,y,z,...)" />
+                android:hint="@string/enter_id_of_nearby_wells_x_y_z"
+                android:inputType="text" />
 
             <Button
                 android:id="@+id/switchViews1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter word data"
+                android:hint="@string/enter_word_data"
                 android:textColor="@color/white"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 
@@ -259,7 +296,15 @@
                 android:id="@+id/sendData1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Send data to server"
+                android:hint="@string/send_data_to_server"
+                android:textColor="@color/white"
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+            <Button
+                android:id="@+id/cancel_button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/cancel"
                 android:textColor="@color/white"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 
