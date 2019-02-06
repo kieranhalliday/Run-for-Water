@@ -109,7 +109,6 @@
     <string name="map">Map</string>
     <string name="is_this_well_a_historic_well">Is this well a historic well</string>
     <string name="enter_a_town_name">Enter a town name</string>
-    <string name="enter_a_street_address">Enter a street address</string>
     <string name="enter_a_well_name">Enter a well name</string>
     <string name="enter_the_sponsor">Enter the sponsor</string>
     <string name="enter_type_of_property">Enter type of property</string>
@@ -140,4 +139,8 @@
     <string name="wet_season_flow_rate">Wet Season Flow Rate</string>
     <string name="send_data_to_server">Send data to server</string>
     <string name="cancel">Cancel</string>
+    <string name="show_well_data">Show Well Data</string>
+    <string name="enter_a_name_here">Enter a name here</string>
+    <string name="enter_a_street_address">Enter a street address</string>
+    <string name="enter_a_town_name_here">Enter a town name here</string>
 </resources>

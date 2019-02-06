@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+// This class exists to enter simplified data into Firebase
 public class EnterHistoricalWellData extends Activity implements View.OnClickListener {
     HashMap<LatLng, String> wellIds = new HashMap<>();
     private EditText town, county, localTerrain, comments, depth, depthToWater,
@@ -41,6 +42,7 @@ public class EnterHistoricalWellData extends Activity implements View.OnClickLis
         latitude = getIntent().getExtras().getDouble("Latitude");
         longitude = getIntent().getExtras().getDouble("Longitude");
         idToUse = getIntent().getExtras().getString("idToUse");
+        // List of current wells is guareenteed to be a hashmap
         wellIds = (HashMap<LatLng, String>) getIntent().getExtras().get("List of Current Wells");
 
         setListeners();

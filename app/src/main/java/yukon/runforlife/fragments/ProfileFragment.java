@@ -12,6 +12,7 @@ import yukon.runforlife.R;
  * Created by Kieran Halliday on 2017-11-02
  */
 
+// To be used in the future
 public class ProfileFragment extends Fragment {
 
     @Override

@@ -55,19 +55,7 @@ import yukon.runforlife.fragments.WebViewFragment;
  * Created by Kieran Halliday on 2017-10-31
  */
 
-// TODO
-/*
-MAJOR
-
-    Game functionality
-
-MINOR
-    Let users upload a profile picture/get chat images
-
-    Change pop up colours if no email or password entered
-    Create a theme colour scheme for the app
-    Change navigation bar icons (Donate, View information, messaging)
- */
+// This is the main class, handles the map and marker placement
 public class LoggedInMain extends LocationProvider implements OnMapReadyCallback,
         BottomNavigationView.OnNavigationItemSelectedListener,
         GoogleMap.OnMapLongClickListener,
@@ -82,7 +70,7 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
 
     // User info
     private User currentUser = null;
-    private String bio = "", email = "", kenyan = "", partnerUser = "", username = "";
+    private String email = "", partnerUser = "", username = "";
 
     // Firebase
     private FirebaseAuth mAuth;
@@ -120,7 +108,7 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
         }
 
         // Listeners
-        mapFragment.getMapAsync(this);
+        Objects.requireNonNull(mapFragment).getMapAsync(this);
         navigation.setOnNavigationItemSelectedListener(this);
     }
 
@@ -134,6 +122,7 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
             changeFragment(0);
         }
 
+        // Parse user data into object
         myRef = database.getReference().child("Users").child(user.getUid());
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -141,14 +130,8 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
 
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     switch (Objects.requireNonNull(child.getKey())) {
-                        case "bio":
-                            bio = String.valueOf(child.getValue());
-                            break;
                         case "email":
                             email = String.valueOf(child.getValue());
-                            break;
-                        case "kenyan":
-                            kenyan = String.valueOf(child.getValue());
                             break;
                         case "partnerUser":
                             partnerUser = String.valueOf(child.getValue());
@@ -156,9 +139,11 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
                         case "username":
                             username = String.valueOf(child.getValue());
                             break;
+                        default:
+                            break;
                     }
                 }
-                currentUser = new User.UserBuilder(email, kenyan.contains("true"), username).bio(bio).partnerUser(partnerUser).build();
+                currentUser = new User.UserBuilder(email, username).partnerUser(partnerUser).build();
             }
 
             @Override
@@ -168,6 +153,7 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
             }
         });
 
+        // Parse well data into object
         myRef = database.getReference().child("Wells");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -238,10 +224,6 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-//            case R.id.build_profile_from_app_barr:
-//                changeFragment(3);
-//                return true;
-
             case android.R.id.home:
                 changeFragment(0);
                 return true;
@@ -309,6 +291,8 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
 
     @Override
     public boolean onMarkerClick(final Marker marker) {
+        // TODO
+        // This method is a work in progress
         //Change color of selected
         //Change color of three closest and mark them as three closest
         //Add extra button in popup to view nearby well data
@@ -325,31 +309,32 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
                 ArrayList<Float> distances = new ArrayList<>();
                 HashMap<Float, InformationWell> wellHashMap = new HashMap<>();
 
+                closestWells.clear();
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     InformationWell informationWell = child.getValue(InformationWell.class);
-                    float results[] = new float[1];
-                    Location.distanceBetween(informationWell != null ? informationWell.getWellLatitude() : 0, informationWell != null ? informationWell.getWellLongitude() : 0, marker.getPosition().latitude, marker.getPosition().longitude, results);
-                    distances.add(results[0]);
-                    wellHashMap.put(results[0], informationWell);
+
+                    assert informationWell != null;
+                    if(informationWell.getWellLongitude() == marker.getPosition().longitude
+                            && informationWell.getWellLatitude() == marker.getPosition().latitude) {
+                        closestWells.add(informationWell);
+                    }
+
+                    // Used to calculate distance between wells, work in progress
+//                    float results[] = new float[1];
+//                    Location.distanceBetween(informationWell != null ? informationWell.getWellLatitude() : 0, informationWell != null ? informationWell.getWellLongitude() : 0, marker.getPosition().latitude, marker.getPosition().longitude, results);
+//                    distances.add(results[0]);
+//                    wellHashMap.put(results[0], informationWell);
                 }
 
-                Collections.sort(distances);
-                closestWells.clear();
-                for (int i = start; i <= start + 3 && distances.size() > 3; i++) {
-                    LatLng latLng = new LatLng(wellHashMap.get(distances.get(i)).getWellLatitude(), wellHashMap.get(distances.get(i)).getWellLongitude());
-                    Marker m = locationToMarkers.get(latLng);
+//                Collections.sort(distances);
+                // Also used to calculate distances between well, work in progress
+//                for (int i = start; i <= start + 3 && distances.size() > 3; i++) {
+//                    LatLng latLng = new LatLng(wellHashMap.get(distances.get(i)).getWellLatitude(), wellHashMap.get(distances.get(i)).getWellLongitude());
+//                    Marker m = locationToMarkers.get(latLng);
 //                    m.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-                    closestWells.add(wellHashMap.get(distances.get(i)));
-
-                }
-
-                for (int i = start + 4; i < distances.size(); i++) {
-                    LatLng latLng = new LatLng(wellHashMap.get(distances.get(i)).getWellLatitude(), wellHashMap.get(distances.get(i)).getWellLongitude());
-                    Marker m = locationToMarkers.get(latLng);
-//                    m.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-                }
-
-//                marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+//                    closestWells.add(wellHashMap.get(distances.get(i)));
+//
+//                }
             }
 
             @Override
@@ -385,6 +370,7 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
     public void showChangeWellDataDialog(final Marker marker) {
         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         final LayoutInflater inflater = this.getLayoutInflater();
+        // According to the documentation, passing null in this situation is ok
         final View dialogView = inflater.inflate(R.layout.enter_data_pop_up, null);
         dialogBuilder.setView(dialogView);
 
@@ -394,7 +380,7 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
         final Button addNewWellDataButton = dialogView.findViewById(R.id.more_data);
         final Button addHistoricalWellDataButton = dialogView.findViewById(R.id.enter_historical_data);
         final Button remove = dialogView.findViewById(R.id.remove_marker);
-        final Button showNearbyData = dialogView.findViewById(R.id.show_nearby_wells_data);
+        final Button showNearbyData = dialogView.findViewById(R.id.show_well_data);
 
         addNewWellDataButton.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), EnterDetailedWellData.class);
@@ -474,80 +460,46 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
             }
         });
         dialogBuilder.setNegativeButton("Cancel", (dialog, whichButton) -> {
-            //pass
+            // do nothing
         });
         enterDataPopUp = dialogBuilder.create();
         enterDataPopUp.show();
     }
 
     private void showAlternativeDialog() {
-        if (closestWells.size() < 3) {
-            Toast.makeText(LoggedInMain.this, "Must have at least three wells nearby in order to see nearby data",
+        if (closestWells.size() < 1) {
+            Toast.makeText(LoggedInMain.this, "Must have at least one well nearby in order to see nearby data",
                     Toast.LENGTH_LONG).show();
             return;
         }
 
         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         final LayoutInflater inflater = this.getLayoutInflater();
+        // According to the documentation, passing null in this situation is ok
         final View dialogView = inflater.inflate(R.layout.show_nearest_wells, null);
         dialogBuilder.setView(dialogView);
 
         final TextView textView1 = dialogView.findViewById(R.id.tv1);
-        final TextView textView2 = dialogView.findViewById(R.id.tv2);
-        final TextView textView3 = dialogView.findViewById(R.id.tv3);
         final Button nextData = dialogView.findViewById(R.id.next_data);
 
         current = 1;
 
-        dialogBuilder.setTitle("Nearby Information");
-        dialogBuilder.setMessage("Nearby data");
+        dialogBuilder.setTitle("Well Information");
         dialogBuilder.setPositiveButton("Done", (dialog, whichButton) -> {
 
         });
 
         dialogBuilder.setNegativeButton("Cancel", (dialog, whichButton) -> {
-            //pass
+            // do nothing
         });
 
-
         nextData.setOnClickListener(view -> {
-            switch (current) {
-                case 1:
-                    textView1.setVisibility(View.VISIBLE);
-                    textView2.setVisibility(View.GONE);
-                    textView3.setVisibility(View.GONE);
+            textView1.setVisibility(View.VISIBLE);
+            String text1 = "WellId:" + closestWells.get(0).getWellId()
+                    + "\nLat" + closestWells.get(0).getWellLatitude()
+                    + "\nLong" + closestWells.get(0).getWellLongitude();
 
-                    String text1 = "Drilled:" + closestWells.get(0).getDepth()
-                            + " Dist to h20: " + closestWells.get(0).getDepthToWater()
-                            + " Dist to bedrock: " + closestWells.get(0).getDepthToBedrock();
-                    textView1.setText(text1);
-                    current = 1;
-                    break;
-
-                case 2:
-                    textView1.setVisibility(View.GONE);
-                    textView2.setVisibility(View.VISIBLE);
-                    textView3.setVisibility(View.GONE);
-
-                    String text2 = "Drilled:" + closestWells.get(1).getDepth()
-                            + " Dist to h20: " + closestWells.get(1).getDepthToWater()
-                            + " Dist to bedrock: " + closestWells.get(1).getDepthToBedrock();
-                    textView2.setText(text2);
-                    current++;
-                    break;
-
-                case 3:
-                    textView1.setVisibility(View.GONE);
-                    textView2.setVisibility(View.GONE);
-                    textView3.setVisibility(View.VISIBLE);
-
-                    String text3 = "Drilled:" + closestWells.get(2).getDepth()
-                            + " Dist to h20: " + closestWells.get(2).getDepthToWater()
-                            + " Dist to bedrock: " + closestWells.get(2).getDepthToBedrock();
-                    textView3.setText(text3);
-                    current++;
-                    break;
-            }
+            textView1.setText(text1);
         });
 
         enterDataPopUp = dialogBuilder.create();
@@ -616,32 +568,6 @@ public class LoggedInMain extends LocationProvider implements OnMapReadyCallback
                     .commit();
         }
     }
-
-
-    // Might be useful later
-
-
-//    void sendEmailVerification() {
-//        final FirebaseUser user = mAuth.getCurrentUser();
-//        if (user != null) {
-//            user.sendEmailVerification()
-//                    .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<Void> task) {
-//                            if (task.isSuccessful()) {
-//                                Toast.makeText(LoggedInMain.this,
-//                                        "Verification email sent to " + user.getEmail(),
-//                                        Toast.LENGTH_SHORT).show();
-//                            } else {
-//                                Log.e(TAG, "sendEmailVerification", task.getException());
-//                                Toast.makeText(LoggedInMain.this,
-//                                        "Failed to send verification email.",
-//                                        Toast.LENGTH_SHORT).show();
-//                            }
-//                        }
-//                    });
-//        }
-//    }
 }
 
 

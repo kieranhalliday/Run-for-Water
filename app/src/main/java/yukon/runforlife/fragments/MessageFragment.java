@@ -34,6 +34,7 @@ import yukon.runforlife.User;
  * Created by Kieran Halliday on 2017-11-01
  */
 
+// To be used when messaging is supported in the app
 public class MessageFragment extends Fragment implements View.OnClickListener {
     private FirebaseAuth mAuth;
     private DatabaseReference messagesRef, usersRef, otherMessagesRef;

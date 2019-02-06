@@ -6,6 +6,8 @@ build
 *.iml
 local.properties
 
+test
+androidTest
 
 # Log file
 *.log

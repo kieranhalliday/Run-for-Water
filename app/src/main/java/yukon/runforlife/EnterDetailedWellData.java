@@ -21,6 +21,7 @@ import java.util.Objects;
  * Created by Kieran Halliday on 2017-11-06
  */
 
+// This class exists to add detailed information to Firebase
 public class EnterDetailedWellData extends AppCompatActivity implements View.OnClickListener {
     private EditText cdnGroup, streetAddress, town, county, typeOfProperty, localTerrain,
             contactName, contactCell, drillingStartDate, drillingFinishDate,

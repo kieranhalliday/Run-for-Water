@@ -7,16 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
+import java.util.Objects;
+
 import yukon.runforlife.R;
 
 /**
  * Created by Kieran Halliday on 2017-11-07
  */
 
+// Used to promote friends of Run for Life
 public class WebViewFragment extends Fragment {
-
-    private WebView webView;
-    private String url = "http://www.shakeyourpower.com/#shakeyourpower";
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +27,10 @@ public class WebViewFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        webView = getView().findViewById(R.id.webView1);
+        WebView webView = Objects.requireNonNull(getView()).findViewById(R.id.webView1);
+        // Javascript is required for the shake your power website
         webView.getSettings().setJavaScriptEnabled(true);
+        String url = "http://www.shakeyourpower.com/#shakeyourpower";
         webView.loadUrl(url);
     }
 

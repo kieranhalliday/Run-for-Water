@@ -13,19 +13,19 @@
             android:id="@+id/well_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter a name here" />
+            android:hint="@string/enter_a_name_here" />
 
         <EditText
             android:id="@+id/street_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter a street address" />
+            android:hint="@string/enter_a_street_address" />
 
         <EditText
             android:id="@+id/town"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter a town name here" />
+            android:hint="@string/enter_a_town_name_here" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,10 +57,10 @@
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 
             <Button
-                android:id="@+id/show_nearby_wells_data"
+                android:id="@+id/show_well_data"
                 android:layout_width="181dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/show_nearby_data"
+                android:hint="@string/show_well_data"
                 android:textColor="@color/white"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 

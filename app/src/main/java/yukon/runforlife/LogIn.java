@@ -3,8 +3,6 @@ package yukon.runforlife;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-
 import com.facebook.CallbackManager;
 import com.facebook.login.Login;
 import com.firebase.ui.auth.AuthUI;
@@ -52,12 +50,11 @@ public class LogIn extends AppCompatActivity {
         // Pass the activity result back to the Facebook SDK
         mCallbackManager.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
-            IdpResponse response = IdpResponse.fromResultIntent(data);
+            IdpResponse.fromResultIntent(data);
 
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                Log.e("Tag", user != null ? user.toString() : null);
                 Intent intent = new Intent(this, LoggedInMain.class);
                 Gson gS = new Gson();
                 String target = gS.toJson(user);
@@ -66,10 +63,8 @@ public class LogIn extends AppCompatActivity {
                 startActivity(intent);
                 // ...
             } else {
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
-                // ...
+                // Sign in failed.
+                // Do nothing
             }
         }
     }

@@ -4,6 +4,9 @@ package yukon.runforlife;
  * Created by Kieran Halliday on 2017-11-04
  */
 
+// This class is required in order to parse Firebase objects properly
+    // It follows the format required for easy deserialization
+    // The static builder class exists to avoid a large number of constructors, getters and setters
 public class InformationWell {
     private String name, cdnGroup, streetAddress, town, county, typeOfProperty, localTerrain, locationRelativeToSlope,
             contactName, contactCell, contactEmail, drillingStartDate, drillingFinishDate, pumpInstallationDate,

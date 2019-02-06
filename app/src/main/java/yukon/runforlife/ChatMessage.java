@@ -2,6 +2,7 @@ package yukon.runforlife;
 
 import java.util.Date;
 
+// To be used when messaging is implemented
 public class ChatMessage {
 
     private String messageText;
